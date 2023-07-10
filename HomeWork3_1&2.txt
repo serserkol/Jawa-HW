@@ -1,0 +1,79 @@
+public class HomeWork3 {
+
+    public static void main(String[] args) {
+        // Создаём строку через new - I study Basic Java!
+        String s = new String("I study Basic Java!");
+
+        // Пишем метод, который принимает в качестве параметра строку, передаём в этот метод строку, которую создали в п.1
+        printString(s);
+    }
+
+    public static void printString(String s) {
+        // Распечатаем последний символ строки. Используем метод String.charAt().
+        System.out.println("Последний символ строки: " + s.charAt(s.length() - 1));
+
+        // Проверяем, содержит ли строка подстроку “Java”. Используем метод String.contains().
+        System.out.println("Строка содержит подстроку Java: " + s.contains("Java"));
+
+        // Заменяем все символы “а” на “о”.
+        s = s.replace('a', 'o');
+        System.out.println("Строка после замены а на о: " + s);
+
+        // Преобразуем строку к верхнему регистру.
+        s = s.toUpperCase();
+        System.out.println("Строка в верхнем регистре: " + s);
+
+        // Преобразуем строку к нижнему регистру.
+        s = s.toLowerCase();
+        System.out.println("Строка в нижнем регистре: " + s);
+
+        // Вырезаем строку Java c помощью метода String.substring().
+        int index = s.indexOf("java");
+        if (index != -1) {
+            s = s.substring(0, index) + s.substring(index + 4);
+            System.out.println("Строка после вырезания Java: " + s);
+        } else {
+            System.out.println("Строка не содержит Java");
+        }
+    }
+
+}
+
+___________________________________________________________________________________________
+
+public class HomeWork3_2 {
+
+    public static int add(int a, int b) {
+        return a + b; // возвращает сумму двух чисел
+    }
+
+    // Создаём метод, который выполняет операцию вычитания
+    public static int subtract(int a, int b) {
+        return a - b; // возвращает разность двух чисел
+    }
+
+    // Создаём метод, который выполняет операцию умножения
+    public static int multiply(int a, int b) {
+        return a * b; // возвращает произведение двух чисел
+    }
+
+    // Создаём метод, который выполняет операцию деления
+    public static int divide(int a, int b) {
+        return a / b; // возвращает частное двух чисел
+    }
+
+    // Главный метод программы
+    public static void main(String[] args) {
+        // Вызываем все методы с произвольными значениями
+        int result1 = add(10, 5); // вызовите метод add с параметрами 10 и 5
+        int result2 = subtract(20, 15); // вызовите метод subtract с параметрами 20 и 15
+        int result3 = multiply(3, 4); // вызовите метод multiply с параметрами 3 и 4
+        int result4 = divide(12, 6); // вызовите метод divide с параметрами 12 и 6
+
+        // Распечатаем результаты в консоль
+        System.out.println("Результат сложения: " + result1);
+        System.out.println("Результат вычитания: " + result2);
+        System.out.println("Результат умножения: " + result3);
+        System.out.println("Результат деления: " + result4);
+    }
+}
