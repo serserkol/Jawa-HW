@@ -1,0 +1,145 @@
+ 1 уровень сложности: 1)
+Найти сумму всех элементов ArrayList.
+Найти среднее значение элементов ArrayList.
+Перебрать ArrayList и найти наименьший элемент.
+Перебрать ArrayList и найти сумму квадратов всех элементов.
+*Перебрать ArrayList и удалить все четные числа.
+*Перебрать ArrayList и найти второй по величине элемент.
+
+// Найти сумму всех элементов ArrayList.
+int sum = 0;
+for (Integer el : list) {
+    sum += el;
+}
+System.out.println("Сумма всех элементов: " + sum);
+
+// Найти среднее значение элементов ArrayList.
+double average = sum / (double) list.size();
+System.out.println("Среднее значение: " + average);
+
+// Перебрать ArrayList и найти наименьший элемент.
+int min = list.get(0);
+for (Integer el : list) {
+    if (el < min) {
+        min = el;
+    }
+}
+System.out.println("Наименьший элемент: " + min);
+
+// Перебрать ArrayList и найти сумму квадратов всех элементов.
+int sumOfSquares = 0;
+for (Integer el : list) {
+    sumOfSquares += el * el;
+}
+System.out.println("Сумма квадратов всех элементов: " + sumOfSquares);
+
+// Перебрать ArrayList и удалить все четные числа.
+list.removeIf(el -> el % 2 == 0);
+System.out.println("После удаления всех четных чисел: " + list);
+
+// Перебрать ArrayList и найти второй по величине элемент.
+int max = list.get(0);
+int secondMax = list.get(0);
+for (Integer el : list) {
+    if (el > max) {
+        secondMax = max;
+        max = el;
+    } else if (el > secondMax) {
+        secondMax = el;
+    }
+}
+System.out.println("Второй по величине элемент: " + secondMax);
+
+// Перебрать ArrayList и найти количество элементов, начинающихся с определенной буквы.
+Перебрать ArrayList и объединить все элементы в одну строку.
+Перебрать ArrayList и найти самую короткую строку.//
+
+// Перебрать ArrayList и найти количество элементов, начинающихся с определенной буквы.
+char letter = 'a'; // Замените это на букву, которую вы ищете
+int count = 0;
+for (String el : list) {
+    if (el.charAt(0) == letter) {
+        count++;
+    }
+}
+System.out.println("Количество элементов, начинающихся с буквы '" + letter + "': " + count);
+
+// Перебрать ArrayList и объединить все элементы в одну строку.
+StringBuilder sb = new StringBuilder();
+for (String el : list) {
+    sb.append(el);
+}
+System.out.println("Все элементы, объединенные в одну строку: " + sb.toString());
+
+// Перебрать ArrayList и найти самую короткую строку.
+String shortest = list.get(0);
+for (String el : list) {
+    if (el.length() < shortest.length()) {
+        shortest = el;
+    }
+}
+System.out.println("Самая короткая строка: " + shortest);
+
+
+//Создать ArrayList с объектами вашего собственного класса (например Human) и вывести их на экран.
+Создать ArrayList с объектами вашего собственного класса и вывести только те, которые удовлетворяют определенному условию.
+Создать ArrayList с объектами вашего собственного класса и удалить все элементы, удовлетворяющие определенному условию.
+Создать ArrayList с объектами вашего собственного класса и отфильтровать только уникальные элементы.//
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+class Human {
+    String name;
+    int age;
+
+    Human(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Human{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List<Human> humans = new ArrayList<>();
+        humans.add(new Human("Анна", 20));
+        humans.add(new Human("Иван", 25));
+        humans.add(new Human("Сергей", 30));
+        humans.add(new Human("Анна", 20));
+
+        // Вывести все объекты
+        for (Human human : humans) {
+            System.out.println(human);
+        }
+
+        // Вывести только те, которые удовлетворяют определенному условию (например, возраст больше 20)
+        for (Human human : humans) {
+            if (human.age > 20) {
+                System.out.println(human);
+            }
+        }
+
+        // Удалить все элементы, удовлетворяющие определенному условию (например, имя "Анна")
+        humans.removeIf(human -> "Анна".equals(human.name));
+        for (Human human : humans) {
+            System.out.println(human);
+        }
+
+        // Отфильтровать только уникальные элементы
+        List<Human> uniqueHumans = humans.stream().distinct().collect(Collectors.toList());
+        for (Human human : uniqueHumans) {
+            System.out.println(human);
+        }
+    }
+}
+
+
